@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/png" href="logo.png">
+<title>NXT COMPUTE 2026 – Conference Webpage
+</title>
+<style>
+:root {
+  --bg: #f5f7fb;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --primary: #1d4ed8;
+  --primary-dark: #1e40af;
+  --border: #dbe3f0;
+  --accent: #eff6ff;
+  --success: #ecfdf5;
+  --warn-bg: #fff7ed;
+  --warn-border: #fed7aa;
+  --warn-text: #9a3412;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+a { color: var(--primary-dark); }
+.container {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  min-height: 100vh;
+}
+.sidebar {
+  background: linear-gradient(180deg, #0f172a 0%, #172554 100%);
+  color: white;
+  padding: 24px 20px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.main {
+  padding: 28px;
+}
+.hero {
+  background: linear-gradient(135deg, #0b2c6b 0%, #1f4fbf 100%);
+  color: white;
+  border-radius: 22px;
+  padding: 28px;
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.12);
+}
+.hero h2 {
+  margin: 0 0 10px;
+  font-size: 2.1rem;
+}
+.hero p {
+  margin: 0;
+  line-height: 1.7;
+  color: #e8f0ff;
+}
+.meta {
+  color: #dbeafe;
+  line-height: 1.8;
+  margin: 14px 0 0;
+}
+.note {
+  background: var(--warn-bg);
+  border: 1px solid var(--warn-border);
+  color: var(--warn-text);
+  border-radius: 14px;
+  padding: 14px 16px;
+  line-height: 1.6;
+  margin-top: 18px;
+}
+.top-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(260px, 1fr));
+  gap: 18px;
+  margin: 22px 0 10px;
+}
+.session-card, .info-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+}
+.session-card h3, .info-card h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 18px;
+  margin-top: 24px;
+}
+.toolbar {
+  display: flex;
+  gap: 12px;
+  margin: 24px 0 18px;
+  flex-wrap: wrap;
+}
+.toolbar input {
+  flex: 1;
+  min-width: 240px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 1rem;
+}
+.anchor-tabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.anchor-tabs a {
+  text-decoration: none;
+  color: var(--primary-dark);
+  background: var(--accent);
+  border: 1px solid #bfdbfe;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+.section {
+  margin-top: 26px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+}
+.section h3 {
+  margin: 0 0 16px;
+}
+.section p, .section li {
+  line-height: 1.75;
+}
+.cards-2, .cards-3, .cards-4 {
+  display: grid;
+  gap: 18px;
+}
+.cards-2 { grid-template-columns: repeat(2, minmax(280px, 1fr)); }
+.cards-3 { grid-template-columns: repeat(3, minmax(220px, 1fr)); }
+.cards-4 { grid-template-columns: repeat(4, minmax(200px, 1fr)); }
+.feature-card {
+  background: #fbfdff;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 18px;
+}
+.badge {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--accent);
+  border: 1px solid #bfdbfe;
+  color: var(--primary-dark);
+  font-size: 0.86rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.table-wrap {
+  overflow-x: auto;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+}
+th, td {
+  text-align: left;
+  padding: 12px 10px;
+  border-bottom: 1px solid #e5e7eb;
+  vertical-align: top;
+  line-height: 1.5;
+}
+th {
+  background: #f8fafc;
+  font-size: 0.95rem;
+}
+.list-clean {
+  margin: 0;
+  padding-left: 20px;
+}
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+.person-card {
+  background: #fbfdff;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 18px;
+}
+.person-card h4 {
+  margin: 0 0 8px;
+}
+.small-text {
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+footer {
+  text-align: center;
+  color: var(--muted);
+  padding: 22px 0 6px;
+}
+@media (max-width: 1180px) {
+  .info-grid, .cards-3, .cards-4 { grid-template-columns: repeat(2, minmax(220px, 1fr)); }
+}
+@media (max-width: 980px) {
+  .container { grid-template-columns: 1fr; }
+  .sidebar {
+    position: relative;
+    height: auto;
+  }
+  .top-grid, .info-grid, .cards-2, .cards-3, .cards-4 { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <aside class="sidebar">
+    <h1>NXT COMPUTE 2026</h1>
+    <p>Official conference webpage with brochure details, registration information, committee information, keynote speakers, and parallel presentation schedule.</p>
+
+    <div class="quick-links">
+      <a class="join-btn" href="https://meet.google.com/qnd-xyyu-usj?authuser=1" target="_blank" rel="noopener">Open Session 1 Link</a>
+      <a class="join-btn" href="https://meet.google.com/oym-jzpm-fkr?authuser=1" target="_blank" rel="noopener">Open Session 2 Link</a>
+      <a class="join-btn" href="NEXT COMPUTE CONFERENCE BROCHURE.pdf" target="_blank" rel="noopener">Open Conference Brochure</a>
+      <a class="join-btn" href="Next_Compute_2026_Parallel_Schedule for web page.xlsx" download>Download Excel Schedule</a>
+    </div>
+
+    <div class="box">
+      <strong>Quick Navigation</strong>
+      <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#eligibility">Eligible Delegates</a></li>
+        <li><a href="#session1">Session 1 Schedule</a></li>
+        <li><a href="#session2">Session 2 Schedule</a></li>
+        <li><a href="#guidelines">Conference Guidelines</a></li>
+        <li><a href="#committee">Conference Committee</a></li>
+        <li><a href="#speakers">Keynote Speakers</a></li>
+        <li><a href="#coordinators">Coordinators & Student Committee</a></li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <strong>Event Highlights</strong>
+      <ul>
+        <li>Online mode conference</li>
+        <li>Google Meet presentation access</li>
+        <li>Certificates for all participants</li>
+        <li>AI, Quantum, Data Science, Cybersecurity and emerging technology themes</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <strong>Contact & Submission</strong>
+      <p style="margin-top:10px;">Paper submission mail:<br><b>nxtcompute2026@gmail.com</b></p>
+      <p>Enquiries:<br>
+      Mr. V. Isaac Robin Singh – 8122539665<br>
+      Mr. G. Muthaiyan – 704382432<br>
+      Mr. E. Kaviarasan – 9363582879</p>
+    </div>
+  </aside>
+
+  <main class="main">
+    <section class="hero" id="overview">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;">
+        <div>
+		<h2>ST.LOURDES ENGINEERING COLLEGE</h2>
+            <h2>NEXT COMPUTE 2026</h2>
+                    </div>
+        <div>
+            <img src="logo.png" style="height:160px;">
+        </div>
+    </div>
+      <p>National Conference on AI, Quantum and Emerging Computational Paradigms</p>
+      <div class="meta">
+        <strong>Mode:</strong> Online<br>
+        <strong>Date:</strong> 27 March 2026<br>
+        <strong>Time:</strong> 10:00 AM onwards<br>
+        <strong>Platform:</strong> Google Meet<br>
+        <strong>Organized by:</strong> Faculty of Information and Communication Engineering, St. Lourdes Engineering College
+      </div>
+      <div class="note">
+        Certificates will be provided to all. This page also includes the parallel session schedule so each participant can directly open the correct Meet link.
+      </div>
+    </section><div class="info-grid">
+      <div class="info-card">
+        <div class="badge">About the College</div>
+        <h3>St. Lourdes Engineering College</h3>
+        <p>Founded in 2009 by Ln. Dr. S. Peter under the Lourdes Ammal Educational Trust, St. Lourdes Engineering College is one of Chennai’s dynamic Christian minority institutions. The college is located on NH45 and focuses on compassion, innovation, integrity, and future-ready engineering education.</p>
+      </div>
+      <div class="info-card">
+        <div class="badge">About the Department</div>
+        <h3>Information and Communication Engineering</h3>
+        <p>The Department of Information and Communication Engineering nurtures future technologists through academic excellence and industry relevance. The program emphasizes innovation, ethical engineering practice, and hands-on learning in modern communication systems and information technologies.</p>
+      </div>
+      <div class="info-card">
+        <div class="badge">About the Conference</div>
+        <h3>Conference Vision</h3>
+        <p>Next Compute is designed to bring together researchers, academicians, students, and industry experts to discuss high-impact ideas across Artificial Intelligence, Data Science, Quantum Computing, Cybersecurity, and other emerging computational domains.</p>
+      </div>
+    </div>
+
+
+    <div class="top-grid">
+      <div class="session-card">
+        <h3>Session 1</h3>
+        <p><strong>Google Meet:</strong><br>
+        <a href="https://meet.google.com/qnd-xyyu-usj?authuser=1" target="_blank" rel="noopener">https://meet.google.com/qnd-xyyu-usj?authuser=1</a></p>
+        <p>Parallel presentation room for Session 1 participants.</p>
+      </div>
+
+      <div class="session-card">
+        <h3>Session 2</h3>
+        <p><strong>Google Meet:</strong><br>
+        <a href="https://meet.google.com/oym-jzpm-fkr?authuser=1" target="_blank" rel="noopener">https://meet.google.com/oym-jzpm-fkr?authuser=1</a></p>
+        <p>Parallel presentation room for Session 2 participants.</p>
+      </div>
+    </div>
+
+    
+
+    <div class="toolbar">
+      <input id="searchBox" type="text" placeholder="Search by institution, participant, email, or paper title..." />
+      <div class="anchor-tabs">
+        <a href="#session1">Session 1</a>
+        <a href="#session2">Session 2</a>
+        <a href="#guidelines">Guidelines</a>
+        <a href="#committee">Committee</a>
+        <a href="#speakers">Speakers</a>
+      </div>
+    </div>
+
+    <section class="section" id="eligibility">
+      <h3>Eligible Delegates</h3>
+      <div class="cards-3">
+        <div class="feature-card">
+          <div class="badge">Students</div>
+          <p>Students pursuing Engineering at UG and PG level are eligible to participate.</p>
+        </div>
+        <div class="feature-card">
+          <div class="badge">Academia</div>
+          <p>Faculty members and research scholars from all institutions can register and present.</p>
+        </div>
+        <div class="feature-card">
+          <div class="badge">Industry</div>
+          <p>Industry professionals interested in academic and research aspects of AI and emerging technologies can join.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section" id="session1">
+      <h3>Session 1 Schedule</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Institution</th>
+              <th>Participants</th>
+              <th>Contact Email ID</th>
+              <th>Paper Title</th>
+              <th>Meet Link</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+    <tr data-search="10:00 am - 10:10 am nandha engineering college roshini t m, priyadharshini m, rosshini s roshinirose282005@gmail.com a honeypot driven cyberattack analysis and temporal forecasting framework using bi-lstm">
+      <td>10:00 AM - 10:10 AM</td>
+      <td>Nandha Engineering College</td>
+      <td>Roshini T M, Priyadharshini M, Rosshini S</td>
+      <td><a href="mailto:roshinirose282005@gmail.com">roshinirose282005@gmail.com</a></td>
+      <td>A honeypot driven cyberattack analysis and temporal forecasting framework using BI-LSTM</td>
+      <td><a class="join-btn small" href="https://meet.google.com/qnd-xyyu-usj?authuser=1" target="_blank" rel="noopener">Join Session 1</a></td>
+    </tr>
+    
+
+    <tr data-search="10:10 am - 10:20 am r.m.k. college of engineering and technology swetha r, sandhiya sree a swethamoni2011@gmail.com using machine learning to detect malicious mobile applications">
+      <td>10:10 AM - 10:20 AM</td>
+      <td>R.M.K. COLLEGE OF ENGINEERING AND TECHNOLOGY</td>
+      <td>SWETHA R, SANDHIYA SREE A</td>
+      <td><a href="mailto:swethamoni2011@gmail.com">swethamoni2011@gmail.com</a></td>
+      <td>Using Machine Learning to Detect Malicious Mobile Applications</td>
+      <td><a class="join-btn small" href="https://meet.google.com/qnd-xyyu-usj?authuser=1" target="_blank" rel="noopener">Join Session 1</a></td>
+    </tr>
+    
+
+    <tr data-search="10:20 am - 10:30 am kamaraj college of engineering and technology arun p, ashvin kumar m, subhash s ashhub0710@gmail.com college grievance and issue management system">
+      <td>10:20 AM - 10:30 AM</td>
+      <td>Kamaraj College of Engineering and technology</td>
+      <td>Arun P, Ashvin Kumar M, Subhash S</td>
+      <td><a href="mailto:ashhub0710@gmail.com">ashhub0710@gmail.com</a></td>
+      <td>College Grievance and Issue Management System</td>
+      <td><a class="join-btn small" href="https://meet.google.com/qnd-xyyu-usj?authuser=1" target="_blank" rel="noopener">Join Session 1</a></td>
+    </tr>
+    
+
+    <tr data-search="10:30 am - 10:40 am adhi college of engineering and technology chandru k, jayakumar m, kishore p, jeeva kumar a jayakumarm2004@gmail.com a smart monitoring and alert system for real-time violence recognition in public spaces">
+      <td>10:30 AM - 10:40 AM</td>
+      <td>Adhi college of engineering and technology</td>
+      <td>Chandru K, Jayakumar M, Kishore P, Jeeva Kumar A</td>
+      <td><a href="mailto:jayakumarm2004@gmail.com">jayakumarm2004@gmail.com</a></td>
+      <td>A Smart Monitoring and Alert System for Real-Time Violence Recognition in Public Spaces</td>
+      <td><a class="join-btn small" href="https://meet.google.com/qnd-xyyu-usj?authuser=1" target="_blank" rel="noopener">Join Session 1</a></td>
+    </tr>
+    
+
+    <tr data-search="10:40 am - 10:50 am r.m.k college of engineering and technology malini m, dhaarini t, mithra c malinimuthukumar221106@gmail.com impact of deepfake resilient and secure digital authentication framework">
+      <td>10:40 AM - 10:50 AM</td>
+      <td>R.M.K College of Engineering and Technology</td>
+      <td>Malini M, Dhaarini T, Mithra C</td>
+      <td><a href="mailto:malinimuthukumar221106@gmail.com">malinimuthukumar221106@gmail.com</a></td>
+      <td>IMPACT OF DEEPFAKE RESILIENT AND SECURE DIGITAL AUTHENTICATION FRAMEWORK</td>
+      <td><a class="join-btn small" href="https://meet.google.com/qnd-xyyu-usj?authuser=1" target="_blank" rel="noopener">Join Session 1</a></td>
+    </tr>
+    
+
+    <tr data-search="10:50 am - 11:00 am adhi college of engineering and technology kanmani j, keerthana k, lavanya s, sarumathi devi s komathisivaprakasam30@gmail.com spotiq flowgrid zenpilot">
+      <td>10:50 AM - 11:00 AM</td>
+      <td>Adhi college of engineering and technology</td>
+      <td>Kanmani J, Keerthana K, Lavanya S, Sarumathi Devi S</td>
+      <td><a href="mailto:komathisivaprakasam30@gmail.com">komathisivaprakasam30@gmail.com</a></td>
+      <td>Spotiq Flowgrid Zenpilot</td>
+      <td><a class="join-btn small" href="https://meet.google.com/qnd-xyyu-usj?authuser=1" target="_blank" rel="noopener">Join Session 1</a></td>
+    </tr>
+    
+
+    <tr data-search="11:00 am - 11:10 am st. lourde&#x27;s engineering college fasith rahman m fnfasith142@gmail.com ai-powered online exam cheating detector">
+      <td>11:00 AM - 11:10 AM</td>
+      <td>St. Lourde&#x27;s Engineering College</td>
+      <td>Fasith Rahman M</td>
+      <td><a href="mailto:fnfasith142@gmail.com">fnfasith142@gmail.com</a></td>
+      <td>AI-POWERED ONLINE EXAM CHEATING DETECTOR</td>
+      <td><a class="join-btn small" href="https://meet.google.com/qnd-xyyu-usj?authuser=1" target="_blank" rel="noopener">Join Session 1</a></td>
+    </tr>
+    
+
+    <tr data-search="11:10 am - 11:20 am st.lourdes engineering college lithyavathi.b, thamaraiselvi.l, rogini.h lithyaboomi22@gmail.com smart sign language to voice interpreter two-way translation using indian sign language and tamil voice">
+      <td>11:10 AM - 11:20 AM</td>
+      <td>St.Lourdes Engineering College</td>
+      <td>LITHYAVATHI.B, Thamaraiselvi.L, Rogini.H</td>
+      <td><a href="mailto:lithyaboomi22@gmail.com">lithyaboomi22@gmail.com</a></td>
+      <td>Smart sign Language to voice Interpreter Two-way translation Using Indian sign language and tamil voice</td>
+      <td><a class="join-btn small" href="https://meet.google.com/qnd-xyyu-usj?authuser=1" target="_blank" rel="noopener">Join Session 1</a></td>
+    </tr>
+    
+
+    <tr data-search="11:20 am - 11:30 am st lourdes engineering college johnpaul j, deepak e, arul prasanna a, mrs.ramya vanmathy g (assistant professor) johnjoshva814@gmail.com ai-powered conversational agent for college admission and academic assistance">
+      <td>11:20 AM - 11:30 AM</td>
+      <td>St Lourdes engineering College</td>
+      <td>Johnpaul J, Deepak E, Arul prasanna A, Mrs.Ramya Vanmathy G (Assistant professor)</td>
+      <td><a href="mailto:johnjoshva814@gmail.com">johnjoshva814@gmail.com</a></td>
+      <td>AI-Powered Conversational Agent for College Admission and Academic Assistance</td>
+      <td><a class="join-btn small" href="https://meet.google.com/qnd-xyyu-usj?authuser=1" target="_blank" rel="noopener">Join Session 1</a></td>
+    </tr>
+    
+
+    <tr data-search="11:30 am - 11:40 am st.lourdes engineering college p.vishnu, a.shakthi, m.purushoth, k.manivannan shakthiarunachalam2003@gmail.com unified academic erp system for smart admission, digital enrollment , timetable scheduling, and examination management">
+      <td>11:30 AM - 11:40 AM</td>
+      <td>ST.Lourdes engineering college</td>
+      <td>P.Vishnu, A.Shakthi, M.Purushoth, K.Manivannan</td>
+      <td><a href="mailto:shakthiarunachalam2003@gmail.com">shakthiarunachalam2003@gmail.com</a></td>
+      <td>Unified Academic ERP System for Smart Admission, Digital Enrollment , Timetable Scheduling, and Examination Management</td>
+      <td><a class="join-btn small" href="https://meet.google.com/qnd-xyyu-usj?authuser=1" target="_blank" rel="noopener">Join Session 1</a></td>
+    </tr>
+    
+
+    <tr data-search="11:40 am - 11:50 am st.lourdes engineering college e.abinaya, d.lavanya, k.sangeetha, a.hariakash daniarunkumar23@gmail.com edge ai based smart fault detection in household electric appliance">
+      <td>11:40 AM - 11:50 AM</td>
+      <td>St.lourdes engineering college</td>
+      <td>E.Abinaya, D.lavanya, K.Sangeetha, A.Hariakash</td>
+      <td><a href="mailto:daniarunkumar23@gmail.com">daniarunkumar23@gmail.com</a></td>
+      <td>Edge ai based smart fault detection in household electric appliance</td>
+      <td><a class="join-btn small" href="https://meet.google.com/qnd-xyyu-usj?authuser=1" target="_blank" rel="noopener">Join Session 1</a></td>
+    </tr>
+    
+
+    <tr data-search="11:50 am - 12:00 pm st.lourdes engineering college arthi.p, indhuja.k, baburam arthipalani317@gmail.com decentralized digital voting system using blockchain">
+      <td>11:50 AM - 12:00 PM</td>
+      <td>ST.LOURDES ENGINEERING COLLEGE</td>
+      <td>Arthi.p, Indhuja.k, Baburam</td>
+      <td><a href="mailto:arthipalani317@gmail.com">arthipalani317@gmail.com</a></td>
+      <td>DECENTRALIZED DIGITAL VOTING SYSTEM USING BLOCKCHAIN</td>
+      <td><a class="join-btn small" href="https://meet.google.com/qnd-xyyu-usj?authuser=1" target="_blank" rel="noopener">Join Session 1</a></td>
+    </tr>
+    
+
+    <tr data-search="12:00 pm - 12:10 pm st. lourdes engineering college mariammal.jagan marimari59867@gmail.com machine learning based duplicate insurance claim detection system">
+      <td>12:00 PM - 12:10 PM</td>
+      <td>St. Lourdes engineering college</td>
+      <td>Mariammal.jagan</td>
+      <td><a href="mailto:marimari59867@gmail.com">marimari59867@gmail.com</a></td>
+      <td>Machine learning based duplicate insurance claim detection system</td>
+      <td><a class="join-btn small" href="https://meet.google.com/qnd-xyyu-usj?authuser=1" target="_blank" rel="noopener">Join Session 1</a></td>
+    </tr>
+    
+
+    <tr data-search="12:10 pm - 12:20 pm st.lourdes engineering college naveen p, ananthakrishnan r p94668916@gmail.com auraflow-ai powered smart fan using thermal sensing">
+      <td>12:10 PM - 12:20 PM</td>
+      <td>ST.Lourdes engineering college</td>
+      <td>Naveen P, Ananthakrishnan R</td>
+      <td><a href="mailto:p94668916@gmail.com">p94668916@gmail.com</a></td>
+      <td>AuraFlow-AI Powered Smart Fan Using Thermal Sensing</td>
+      <td><a class="join-btn small" href="https://meet.google.com/qnd-xyyu-usj?authuser=1" target="_blank" rel="noopener">Join Session 1</a></td>
+    </tr>
+    
+
+    <tr data-search="12:20 pm - 12:30 pm st.lourdes engineering college yuvashree s, nandhini m yuvasrianjali@gmail.com smart helmet for accident detection and emergency alert system">
+      <td>12:20 PM - 12:30 PM</td>
+      <td>ST.LOURDES ENGINEERING COLLEGE</td>
+      <td>yuvashree S, nandhini M</td>
+      <td><a href="mailto:yuvasrianjali@gmail.com">yuvasrianjali@gmail.com</a></td>
+      <td>Smart Helmet for Accident Detection and Emergency Alert System</td>
+      <td><a class="join-btn small" href="https://meet.google.com/qnd-xyyu-usj?authuser=1" target="_blank" rel="noopener">Join Session 1</a></td>
+    </tr>
+    
+
+    <tr data-search="12:30 pm - 12:40 pm madha institute of engineering and technology v.vishalini, m.abipraha, m.krithika, p.monisha priya vishalini007queen@gmail.com smart bin level monitoring and alerting system">
+      <td>12:30 PM - 12:40 PM</td>
+      <td>Madha institute of engineering and technology</td>
+      <td>V.Vishalini, M.Abipraha, M.Krithika, P.Monisha priya</td>
+      <td><a href="mailto:vishalini007queen@gmail.com">vishalini007queen@gmail.com</a></td>
+      <td>Smart bin level monitoring and alerting system</td>
+      <td><a class="join-btn small" href="https://meet.google.com/qnd-xyyu-usj?authuser=1" target="_blank" rel="noopener">Join Session 1</a></td>
+    </tr>
+    
+
+    <tr data-search="12:40 pm - 12:50 pm st.lourdes engineering college d prince solomon, k. ketharina, t.mariakumar ketharinabkn@gmail.com adaptive zero-trust ransomware defence framework ">
+      <td>12:40 PM - 12:50 PM</td>
+      <td>ST.LOURDES ENGINEERING COLLEGE</td>
+      <td>D Prince solomon, k. ketharina, T.Mariakumar</td>
+      <td><a href="mailto:ketharinabkn@gmail.com">ketharinabkn@gmail.com</a></td>
+      <td>Adaptive Zero-Trust Ransomware Defence Framework </td>
+      <td><a class="join-btn small" href="https://meet.google.com/qnd-xyyu-usj?authuser=1" target="_blank" rel="noopener">Join Session 1</a></td>
+    </tr>
+    
+
+    <tr data-search="12:50 pm - 01:00 pm st lourdes engineering college ganapathy,nithish,vignesh  fake news detection">
+      <td>12:50 PM - 01:00 PM</td>
+      <td>St Lourdes engineering College</td>
+      <td>Ganapathy,Nithish,Vignesh</td>
+      <td><a href="mailto:"></a></td>
+      <td>Fake news Detection</td>
+      <td><a class="join-btn small" href="https://meet.google.com/qnd-xyyu-usj?authuser=1" target="_blank" rel="noopener">Join Session 1</a></td>
+    </tr>
+    
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="session2">
+      <h3>Session 2 Schedule</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Institution</th>
+              <th>Participants</th>
+              <th>Contact Email ID</th>
+              <th>Paper Title</th>
+              <th>Meet Link</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+    <tr data-search="10:00 am - 10:10 am amet university k arun kumar, b rekha arunk314474@gmail.com an intelligent machine learning framework for crop yield and optimal harvest prediction in indian agriculture">
+      <td>10:00 AM - 10:10 AM</td>
+      <td>AMET University</td>
+      <td>K Arun Kumar, B Rekha</td>
+      <td><a href="mailto:arunk314474@gmail.com">arunk314474@gmail.com</a></td>
+      <td>An Intelligent machine learning framework for crop yield and optimal harvest prediction in Indian agriculture</td>
+      <td><a class="join-btn small" href="https://meet.google.com/oym-jzpm-fkr?authuser=1" target="_blank" rel="noopener">Join Session 2</a></td>
+    </tr>
+    
+
+    <tr data-search="10:10 am - 10:20 am nandha engineering college dr.j.amutha praba amuthaprabha.jeyaraj@nandhaengg.org mathematical modeling and matrix representation of quantum gates in quantum computing">
+      <td>10:10 AM - 10:20 AM</td>
+      <td>Nandha Engineering College</td>
+      <td>Dr.J.AMUTHA PRABA</td>
+      <td><a href="mailto:amuthaprabha.jeyaraj@nandhaengg.org">amuthaprabha.jeyaraj@nandhaengg.org</a></td>
+      <td>Mathematical Modeling and Matrix Representation of Quantum Gates in Quantum Computing</td>
+      <td><a class="join-btn small" href="https://meet.google.com/oym-jzpm-fkr?authuser=1" target="_blank" rel="noopener">Join Session 2</a></td>
+    </tr>
+    
+
+    <tr data-search="10:20 am - 10:30 am varuvan vadivelan institute of technology santhosh kumar m, sachin kumar s, dinesh kumar l santhoshkumarm170@gmail.com blockchain modeling with an encryption-based safe system for managing educational records">
+      <td>10:20 AM - 10:30 AM</td>
+      <td>VARUVAN VADIVELAN INSTITUTE OF TECHNOLOGY</td>
+      <td>SANTHOSH KUMAR M, SACHIN KUMAR S, DINESH KUMAR L</td>
+      <td><a href="mailto:santhoshkumarm170@gmail.com">santhoshkumarm170@gmail.com</a></td>
+      <td>BLOCKCHAIN MODELING WITH AN ENCRYPTION-BASED SAFE SYSTEM FOR MANAGING EDUCATIONAL RECORDS</td>
+      <td><a class="join-btn small" href="https://meet.google.com/oym-jzpm-fkr?authuser=1" target="_blank" rel="noopener">Join Session 2</a></td>
+    </tr>
+    
+
+    <tr data-search="10:30 am - 10:40 am jj college of engineering and technology duradina rt, hemalatha m, santha sheela w durart23@gmail.com ai-based offensive content detection and moderation system for social media">
+      <td>10:30 AM - 10:40 AM</td>
+      <td>JJ College of Engineering and Technology</td>
+      <td>Duradina RT, Hemalatha M, Santha sheela W</td>
+      <td><a href="mailto:durart23@gmail.com">durart23@gmail.com</a></td>
+      <td>AI-BASED OFFENSIVE CONTENT DETECTION AND MODERATION SYSTEM FOR SOCIAL MEDIA</td>
+      <td><a class="join-btn small" href="https://meet.google.com/oym-jzpm-fkr?authuser=1" target="_blank" rel="noopener">Join Session 2</a></td>
+    </tr>
+    
+
+    <tr data-search="10:40 am - 10:50 am adhi college of engineering and technology prathiksha s, deepika l, kanisha n, dhivya p prathikshasaidai@gmail.com automated pneumonia diagnosis from chest x-rays using deep learning">
+      <td>10:40 AM - 10:50 AM</td>
+      <td>Adhi college of engineering and technology</td>
+      <td>Prathiksha s, Deepika L, Kanisha N, Dhivya P</td>
+      <td><a href="mailto:prathikshasaidai@gmail.com">prathikshasaidai@gmail.com</a></td>
+      <td>Automated Pneumonia Diagnosis from Chest X-Rays Using Deep Learning</td>
+      <td><a class="join-btn small" href="https://meet.google.com/oym-jzpm-fkr?authuser=1" target="_blank" rel="noopener">Join Session 2</a></td>
+    </tr>
+    
+
+    <tr data-search="10:50 am - 11:00 am m.a.m college of engineering and technology srikannigapriyadharshini r, pricila s, vaishnavi r, abisha a, revathy r rsrikannigapriyadharshini@gmail.com smart tourist safety monitoring incidence response system">
+      <td>10:50 AM - 11:00 AM</td>
+      <td>M.A.M college of Engineering and Technology</td>
+      <td>Srikannigapriyadharshini R, Pricila S, Vaishnavi R, Abisha A, Revathy R</td>
+      <td><a href="mailto:rsrikannigapriyadharshini@gmail.com">rsrikannigapriyadharshini@gmail.com</a></td>
+      <td>Smart tourist safety monitoring incidence response system</td>
+      <td><a class="join-btn small" href="https://meet.google.com/oym-jzpm-fkr?authuser=1" target="_blank" rel="noopener">Join Session 2</a></td>
+    </tr>
+    
+
+    <tr data-search="11:00 am - 11:10 am nandha engineering college hemalathaa v,sivagurunathan m
+,aswin kumar r
+ hemalathaa1705@gmail.com autosoc - an automated security operations framework">
+      <td>11:00 AM - 11:10 AM</td>
+      <td>Nandha Engineering College</td>
+      <td>Hemalathaa V,Sivagurunathan M
+,Aswin kumar R
+</td>
+      <td><a href="mailto:hemalathaa1705@gmail.com">hemalathaa1705@gmail.com</a></td>
+      <td>AutoSOC - An Automated Security Operations Framework</td>
+      <td><a class="join-btn small" href="https://meet.google.com/oym-jzpm-fkr?authuser=1" target="_blank" rel="noopener">Join Session 2</a></td>
+    </tr>
+    
+
+    <tr data-search="11:10 am - 11:20 am st lourdes engineering college febi narkeerthi k m, kiruthiga g kiruthigag2004@gmail.com ai based driven drowsiness and micro sleep prediction with speed behaviour analysis and semi autonomous intervention using deep learning">
+      <td>11:10 AM - 11:20 AM</td>
+      <td>St Lourdes Engineering college</td>
+      <td>Febi Narkeerthi K M, Kiruthiga G</td>
+      <td><a href="mailto:kiruthigag2004@gmail.com">kiruthigag2004@gmail.com</a></td>
+      <td>Ai based driven drowsiness and micro sleep prediction with speed behaviour analysis and semi autonomous intervention using deep learning</td>
+      <td><a class="join-btn small" href="https://meet.google.com/oym-jzpm-fkr?authuser=1" target="_blank" rel="noopener">Join Session 2</a></td>
+    </tr>
+    
+
+    <tr data-search="11:20 am - 11:30 am st.lourdes engineering college imran ali, deivanayagi, eshwaran imranali.mx4@gmail.com solar powered smart irrigation and soil health monitoring system">
+      <td>11:20 AM - 11:30 AM</td>
+      <td>St.Lourdes Engineering College</td>
+      <td>Imran Ali, Deivanayagi, Eshwaran</td>
+      <td><a href="mailto:imranali.mx4@gmail.com">imranali.mx4@gmail.com</a></td>
+      <td>Solar Powered Smart Irrigation And Soil Health Monitoring System</td>
+      <td><a class="join-btn small" href="https://meet.google.com/oym-jzpm-fkr?authuser=1" target="_blank" rel="noopener">Join Session 2</a></td>
+    </tr>
+    
+
+    <tr data-search="11:30 am - 11:40 am st.lourdes engineering college mercy jebarose, rebecca, divya divyakd123456@gmail.com customer churn prediction using machine learning">
+      <td>11:30 AM - 11:40 AM</td>
+      <td>St.Lourdes Engineering College</td>
+      <td>Mercy Jebarose, Rebecca, Divya</td>
+      <td><a href="mailto:divyakd123456@gmail.com">divyakd123456@gmail.com</a></td>
+      <td>Customer churn prediction using Machine Learning</td>
+      <td><a class="join-btn small" href="https://meet.google.com/oym-jzpm-fkr?authuser=1" target="_blank" rel="noopener">Join Session 2</a></td>
+    </tr>
+    
+
+    <tr data-search="11:40 am - 11:50 am st.lourdes engineering college subash chandra bose g, k.sowmiya, m.sandhiya sowmiyait2026@gmail.com real-time intent-aware e-commerce personalization using ai">
+      <td>11:40 AM - 11:50 AM</td>
+      <td>St.Lourdes Engineering College</td>
+      <td>Subash Chandra Bose G, K.Sowmiya, M.Sandhiya</td>
+      <td><a href="mailto:sowmiyait2026@gmail.com">sowmiyait2026@gmail.com</a></td>
+      <td>Real-Time Intent-Aware E-commerce Personalization Using AI</td>
+      <td><a class="join-btn small" href="https://meet.google.com/oym-jzpm-fkr?authuser=1" target="_blank" rel="noopener">Join Session 2</a></td>
+    </tr>
+    
+
+    <tr data-search="11:50 am - 12:00 pm st.lourdes engineering college s.abinaya, s.ammu, m.sangeetha abinaya.sr2022@gmail.com diabetic retinopathy detection system using machine learning">
+      <td>11:50 AM - 12:00 PM</td>
+      <td>ST.LOURDES Engineering college</td>
+      <td>S.Abinaya, S.Ammu, M.Sangeetha</td>
+      <td><a href="mailto:abinaya.sr2022@gmail.com">abinaya.sr2022@gmail.com</a></td>
+      <td>diabetic Retinopathy detection system using machine learning</td>
+      <td><a class="join-btn small" href="https://meet.google.com/oym-jzpm-fkr?authuser=1" target="_blank" rel="noopener">Join Session 2</a></td>
+    </tr>
+    
+
+    <tr data-search="12:00 pm - 12:10 pm st.lourdes engineering college thiru selvan r, hari krithish m, bharath e harikrithish08@gmail.com smart job posting scam dedector using ai">
+      <td>12:00 PM - 12:10 PM</td>
+      <td>St.Lourdes Engineering College</td>
+      <td>Thiru Selvan R, Hari Krithish M, Bharath E</td>
+      <td><a href="mailto:harikrithish08@gmail.com">harikrithish08@gmail.com</a></td>
+      <td>SMART JOB POSTING SCAM DEDECTOR USING AI</td>
+      <td><a class="join-btn small" href="https://meet.google.com/oym-jzpm-fkr?authuser=1" target="_blank" rel="noopener">Join Session 2</a></td>
+    </tr>
+    
+
+    <tr data-search="12:10 pm - 12:20 pm st lourdes engineering college gokulavanan b, christie angelina n, pavithara m gokulavananb058@gmail.com intelligent lms with dynamic content delivery and personalized learning paths using lmm">
+      <td>12:10 PM - 12:20 PM</td>
+      <td>ST Lourdes Engineering College</td>
+      <td>Gokulavanan B, Christie Angelina N, Pavithara M</td>
+      <td><a href="mailto:gokulavananb058@gmail.com">gokulavananb058@gmail.com</a></td>
+      <td>Intelligent LMS with dynamic content delivery and personalized learning paths using LMM</td>
+      <td><a class="join-btn small" href="https://meet.google.com/oym-jzpm-fkr?authuser=1" target="_blank" rel="noopener">Join Session 2</a></td>
+    </tr>
+    
+
+    <tr data-search="12:20 pm - 12:30 pm st. lourdes engineering college vishnu k, felix ignesious j, veeraragavan t, john s kumar veeraragavant571@gmail.com ai-based next-gen emergency response app">
+      <td>12:20 PM - 12:30 PM</td>
+      <td>St. Lourdes Engineering College</td>
+      <td>Vishnu k, Felix Ignesious J, Veeraragavan T, John S kumar</td>
+      <td><a href="mailto:veeraragavant571@gmail.com">veeraragavant571@gmail.com</a></td>
+      <td>AI-Based Next-Gen Emergency Response App</td>
+      <td><a class="join-btn small" href="https://meet.google.com/oym-jzpm-fkr?authuser=1" target="_blank" rel="noopener">Join Session 2</a></td>
+    </tr>
+    
+
+    <tr data-search="12:30 pm - 12:40 pm st. loudres engineering college a. agalya, s. yogesh, p. selvaraj yogeshvanaja2000@gmail.com smart turbine fan and solar panel–based renewable energy charging system">
+      <td>12:30 PM - 12:40 PM</td>
+      <td>ST. LOUDRES ENGINEERING COLLEGE</td>
+      <td>A. Agalya, S. Yogesh, P. Selvaraj</td>
+      <td><a href="mailto:yogeshvanaja2000@gmail.com">yogeshvanaja2000@gmail.com</a></td>
+      <td>Smart Turbine Fan And Solar Panel–Based Renewable Energy Charging System</td>
+      <td><a class="join-btn small" href="https://meet.google.com/oym-jzpm-fkr?authuser=1" target="_blank" rel="noopener">Join Session 2</a></td>
+    </tr>
+    
+
+    <tr data-search="12:40 pm - 12:50 pm st.lourdes engineering college iam only poovarasi192@gmail.com web application and api vulnerability detection scanner">
+      <td>12:40 PM - 12:50 PM</td>
+      <td>ST.LOURDES ENGINEERING COLLEGE</td>
+      <td>Iam only</td>
+      <td><a href="mailto:poovarasi192@gmail.com">poovarasi192@gmail.com</a></td>
+      <td>Web application and API vulnerability detection scanner</td>
+      <td><a class="join-btn small" href="https://meet.google.com/oym-jzpm-fkr?authuser=1" target="_blank" rel="noopener">Join Session 2</a></td>
+    </tr>
+    
+
+    <tr data-search="12:50 pm - 01:00 pm st. lourdes engineering college suganya devi j, suriya s, sandhiya m, hemalatha p, kishore kumar p kishore1kumar4@gmail.com integrated institutional governance and faculty–student academic interaction erp system">
+      <td>12:50 PM - 01:00 PM</td>
+      <td>ST. Lourdes Engineering College</td>
+      <td>Suganya Devi J, Suriya S, Sandhiya M, Hemalatha P, Kishore Kumar P</td>
+      <td><a href="mailto:kishore1kumar4@gmail.com">kishore1kumar4@gmail.com</a></td>
+      <td>Integrated Institutional Governance and Faculty–Student Academic Interaction ERP System</td>
+      <td><a class="join-btn small" href="https://meet.google.com/oym-jzpm-fkr?authuser=1" target="_blank" rel="noopener">Join Session 2</a></td>
+    </tr>
+    
+          </tbody>
+        </table>
+      </div>
+    </section>
+<section class="section" id="guidelines">
+      <h3>Conference Guidelines</h3>
+      <div class="cards-2">
+        <div class="feature-card">
+          <div class="badge">Participation</div>
+          <ul class="list-clean">
+            <li>Only registered participants are allowed to attend and present.</li>
+            <li>All participants must join on time as per the shared schedule.</li>
+            <li>Presentation slots are allotted in advance and cannot be changed.</li>
+            <li>Certificates will be issued only to registered participants who attend and present.</li>
+            <li>The conference follows academic and ethical standards. Plagiarism, copied content, and duplicate submissions are not accepted.</li>
+            <li>Registration fees are non-refundable.</li>
+            <li>The review committee’s decision on acceptance or rejection is final.</li>
+            <li>Selected papers may be published in a Google-indexed journal and publication charges, if any, are borne by the authors.</li>
+          </ul>
+        </div>
+        <div class="feature-card">
+          <div class="badge">Paper Submission Rules</div>
+          <ul class="list-clean">
+            <li>Papers must be original, unpublished, and not under review elsewhere.</li>
+            <li>Plagiarism must be below 15%.</li>
+            <li>Abstract should not exceed 250 words and must include 3–5 keywords.</li>
+            <li>Full paper length: maximum 8 pages.</li>
+            <li>File format: .doc or .docx only.</li>
+            <li>Font: Times New Roman; size 12 pt; title 14 pt bold; headings 12 pt bold.</li>
+            <li>Single spacing, justified alignment, 1 inch margins on all sides.</li>
+            <li>Paper structure: Title, Author Details, Abstract, Keywords, Introduction, Methodology, Analysis, Findings, Conclusion, References (APA format).</li>
+            <li>Maximum two authors per paper. If both attend, both must register individually.</li>
+            <li>File naming format: AuthorName_Title.docx</li>
+            <li>Send both abstract and full paper to the conference mail id.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="committee">
+      <h3>Conference Committee</h3>
+      <div class="cards-3">
+        <div class="person-card">
+          <div class="badge">Chief Patron</div>
+          <h4>Dr. L. N. S. Peter</h4>
+          <p>Founder and Chairman, Madha Group of Academic Institutions</p>
+        </div>
+        <div class="person-card">
+          <div class="badge">Vice Chairperson</div>
+          <h4>Ms. Mercy Florence Peter</h4>
+          <p>Vice Chairperson</p>
+        </div>
+        <div class="person-card">
+          <div class="badge">Managing Director</div>
+          <h4>Mr. Ajay Ravindra Kumar</h4>
+          <p>Managing Director</p>
+        </div>
+        <div class="person-card">
+          <div class="badge">Patron</div>
+          <h4>Dr. Suresh Mohan Kumar P</h4>
+          <p>Principal</p>
+        </div>
+        <div class="person-card">
+          <div class="badge">Conference Convener</div>
+          <h4>Dr. J. Sivamurugan, M.E., Ph.D</h4>
+          <p>HOD of CSE</p>
+        </div>
+        <div class="person-card">
+          <div class="badge">Co-Convener</div>
+          <h4>Ms. V. Suvarnavani, M.Tech.</h4>
+          <p>HOD of ECE</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="speakers">
+      <h3>Keynote Speakers</h3>
+      <div class="cards-4">
+        <div class="person-card">
+          <div class="badge">Academic & Research</div>
+	  <img src="speaker1.png" style="width:100%; height:200px; object-fit:cover; border-radius:12px;">
+          <h4>Dr. A. Selvi, Ph.D</h4>
+          <p>Associate Professor and Head, Department of Artificial Intelligence and Data Science, M. Kumarasamy College of Engineering, Karur</p>
+        </div>
+        <div class="person-card">
+          <div class="badge">Academic & Research</div>
+	<img src="speaker2.png" style="width:100%; height:200px; object-fit:cover; border-radius:12px;">
+          <h4>Dr. D. Vijendra Babu, Ph.D</h4>
+          <p>Associate Professor Grade I, Department of Embedded Technology, School of Electronics Engineering, Vellore Institute of Technology, Vellore</p>
+        </div>
+        <div class="person-card">
+          <div class="badge">Academic & Research</div>
+	<img src="speaker3.png" style="width:100%; height:200px; object-fit:cover; border-radius:12px;">
+          <h4>Dr. C. Karthikeyan, Ph.D</h4>
+          <p>Professor, Department of Computer Science and Engineering, Saveetha School of Engineering, Saveetha Institute of Medical and Technical Sciences, Chennai</p>
+        </div>
+        <div class="person-card">
+          <div class="badge">Industry Expert</div>
+	<img src="speaker4.png" style="width:100%; height:200px; object-fit:cover; border-radius:12px;">
+          <h4>Mr. S. Jeyasakthi Velmurugan, MCA</h4>
+          <p>Project Manager, Cognizant, MEPZ, Chennai</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="coordinators">
+      <h3>Research Coordinators and Student Committee Members</h3>
+      <div class="cards-2">
+        <div class="feature-card">
+          <div class="badge">Research Coordinators</div>
+          <ul class="list-clean">
+            <li>Ms. R. Elavarasi</li>
+            <li>Mr. N. Isravel</li>
+            <li>Ms. M. Nandhini</li>
+            <li>Mr. A. S. Sairam</li>
+            <li>Ms. M. Shobana</li>
+            <li>Ms. S. Yuvashree</li>
+            <li>Mr. S. Siva</li>
+          </ul>
+        </div>
+        <div class="feature-card">
+          <div class="badge">Student Committee Members</div>
+          <ul class="list-clean">
+            <li>Ms. D. Kalaiarasi</li>
+            <li>Mr. A. Antony</li>
+            <li>Mr. V. Karanraj</li>
+            <li>Mr. M. Malarvendan</li>
+            <li>Ms. K. Priya Dharshini</li>
+            <li>Mr. R. Ragul</li>
+            <li>Mr. U. Aakash</li>
+            <li>Mr. K. Sajjaprasanth</li>
+            <li>Mr. S. Santhosh</li>
+            <li>Mr. M. Dineshkumar</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+<footer>Prepared for NXT COMPUTE 2026 Parallel Presentation Schedule</footer>
+  </main>
+</div>
+
+<script>
+const searchBox = document.getElementById('searchBox');
+const rows = document.querySelectorAll('tbody tr');
+
+searchBox.addEventListener('input', function() {
+  const query = this.value.trim().toLowerCase();
+  rows.forEach(row => {
+    const hay = row.getAttribute('data-search') || '';
+    row.style.display = hay.includes(query) ? '' : 'none';
+  });
+});
+</script>
+</body>
+</html>
+
